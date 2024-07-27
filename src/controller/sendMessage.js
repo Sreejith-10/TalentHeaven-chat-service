@@ -14,10 +14,9 @@ export const sendMessage = async (req, res) => {
 		sendToQueue("MESSAGE", {
 			chat_id: chat.chat_id,
 			chat: chat.messages[chat.messages.length - 1],
-		}).then(() => {
-			console.log("message sent");
-			return res.status(200).json({chat});
 		});
+		
+		return res.json({latest: chat.messages[chat.messages.length - 1]});
 	} catch (err) {
 		console.log(err);
 	}

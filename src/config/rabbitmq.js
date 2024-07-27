@@ -19,7 +19,6 @@ export const createConnectionMQ = () => {
 export const sendToQueue = async (key, data) => {
 	let msg = JSON.stringify(data);
 	channel.publish(queue, key, Buffer.from(msg));
-	console.log(`Sent : ${data} to queue:${queue}`);
 	// setTimeout(() => {
 	// 	connection.close();
 	// 	process.exit(0);
